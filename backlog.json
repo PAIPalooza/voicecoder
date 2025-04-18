@@ -1,0 +1,52 @@
+[
+  {
+    "title": "🎤 Implement Microphone Input (Voice Command Capture)",
+    "body": "As a user, I want to press a button and speak my task so that I can use the app hands-free.\n\n**Acceptance Criteria:**\n- UI mic button is available\n- Pressing the button triggers voice recording using browser or native API\n- Audio is captured and streamed to backend or directly to Hume\n\n**Story Points:** 2\n**Epic:** Voice Command Capture",
+    "labels": ["frontend", "feature", "epic:E1", "sscs:2"]
+  },
+  {
+    "title": "🔊 Integrate Hume API for Voice Transcription and Emotion Analysis",
+    "body": "As a developer, I want to stream user audio to the Hume API and receive transcription + emotion scores.\n\n**Acceptance Criteria:**\n- Audio is streamed to Hume API via `/v0/stream`\n- Transcription and emotion JSON is received\n- Handle error cases for poor signal/no speech\n\n**Story Points:** 3\n**Epic:** Voice Command Capture",
+    "labels": ["backend", "integration", "epic:E1", "sscs:3"]
+  },
+  {
+    "title": "🧠 Parse Hume Emotion Data and Flag High-Priority Tasks",
+    "body": "As a developer, I want to map urgency/stress emotions from the Hume API response into a priority flag for the task.\n\n**Acceptance Criteria:**\n- Score > 0.75 sets `priority_flag: true`\n- Store full emotion data in `emotion_data` JSONB\n\n**Story Points:** 2\n**Epic:** Emotion Parsing",
+    "labels": ["backend", "logic", "epic:E2", "sscs:2"]
+  },
+  {
+    "title": "📦 Build FastAPI Backend for Task Creation and Listing",
+    "body": "As a developer, I want to build a backend with FastAPI to support adding and retrieving tasks.\n\n**Acceptance Criteria:**\n- `/tasks` POST and GET routes implemented\n- Uses Supabase or Postgres DB\n- TDD with Pytest or Unittest\n\n**Story Points:** 3\n**Epic:** Task Management Backend",
+    "labels": ["backend", "api", "epic:E3", "sscs:3"]
+  },
+  {
+    "title": "🗃️ Design and Implement Task Data Model",
+    "body": "As a developer, I want a structured schema to store tasks with timestamps, emotion scores, and priority.\n\n**Acceptance Criteria:**\n- `tasks` table includes task_text, created_at, priority_flag, emotion_data\n- Supports future features like audio storage, completed flag\n\n**Story Points:** 2\n**Epic:** Task Management Backend",
+    "labels": ["backend", "schema", "epic:E3", "sscs:2"]
+  },
+  {
+    "title": "🖼️ Display Prioritized Task List in UI",
+    "body": "As a user, I want to see my tasks sorted by priority and timestamp so I can focus on the most urgent items.\n\n**Acceptance Criteria:**\n- Task list sorted with priority tasks first\n- Includes time and optional emotion icon\n- Color-coded for urgency\n\n**Story Points:** 2\n**Epic:** Prioritized Task Display",
+    "labels": ["frontend", "feature", "epic:E4", "sscs:2"]
+  },
+  {
+    "title": "❌ Enable Task Deletion from UI or Voice",
+    "body": "As a user, I want to delete a task either by UI or follow-up voice command.\n\n**Acceptance Criteria:**\n- DELETE route exists in backend\n- UI delete button or voice command triggers removal\n- Task is removed or soft-deleted\n\n**Story Points:** 1\n**Epic:** Task Management Backend",
+    "labels": ["backend", "frontend", "feature", "epic:E3", "sscs:1"]
+  },
+  {
+    "title": "✅ Write Unit Tests for Backend Logic",
+    "body": "As a developer, I want to write tests for all backend functions and endpoints to ensure correctness.\n\n**Acceptance Criteria:**\n- Unit test coverage for task creation, deletion, priority logic\n- Uses TDD workflow with `pytest`\n\n**Story Points:** 2\n**Epic:** TDD/BDD Testing",
+    "labels": ["testing", "backend", "epic:E5", "sscs:2"]
+  },
+  {
+    "title": "🔁 Write E2E Tests for Voice-to-Task Flow",
+    "body": "As a QA, I want to test the complete user flow from voice input to prioritized task list rendering.\n\n**Acceptance Criteria:**\n- Simulate voice input with mocks\n- Validate Hume response handling\n- Assert DB and UI updates\n\n**Story Points:** 3\n**Epic:** TDD/BDD Testing",
+    "labels": ["testing", "e2e", "epic:E5", "sscs:3"]
+  },
+  {
+    "title": "🚀 Deploy Voice-Coded ToDo MVP",
+    "body": "As a developer, I want to deploy the app to Vercel or Render so users can interact with it.\n\n**Acceptance Criteria:**\n- Frontend and backend deployed\n- Environment variables and keys securely managed\n- Accessible via public URL\n\n**Story Points:** 2\n**Epic:** Deployment & DevOps",
+    "labels": ["deployment", "devops", "epic:E6", "sscs:2"]
+  }
+]
